@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All Users</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th> Id </th>
+        <th> Name </th>
+        <th> Surname </th>
+        <th> Department </th>
+        <th> Salary </th>
+        <th> Operations </th>
+    </tr>
+    <div th:each="user : ${users}">
+        <td>
+            <p th:text="${user.getId()}"></p>
+        </td>
+        <td>
+            <p th:text="${user.getName()}"></p>
+        </td>
+        <td>
+            <p th:text="${user.getSurname()}"></p>
+        </td>
+        <td>
+            <p th:text="${user.getDepartment()}"></p>
+        </td>
+        <td> <p th:text="${user.getSalary()}"></p>
+        </td>
+        <td>
+            <a th:href="@{/api/{id}/edit(id=${user.id})}"><input type="submit" class="btn btn danger" value="Edit"></a>
+        </td>
+        <td>
+            <a th:href="@{/api/delete/{id}(id=${user.id})}"><input type="submit" class="btn btn danger" value="Delete"></a>
+        </td>
+    </div>
+
+</table>
+<a href="/api/new"><input type="submit" class="btn btn danger" value="Delete user"></a>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit</title>
+</head>
+<body>
+
+<form th:method="post" th:action="@{/api/{id}(id=${user.getId()})}" th:object="${user}">
+    <label for="name">Enter Name: </label>
+    <input type="text" th:field="*{name}" id="name"/>
+    <br>
+    <label for="surname">Enter Surname: </label>
+    <input type="text" th:field="*{surname}" id="surname"/>
+    <br>
+    <label for="department">Enter Department: </label>
+    <input type="text" th:field="*{department}" id="department"/>
+    <br>
+    <label for="salary">Enter Salary: </label>
+    <input type="text" th:field="*{salary}" id="salary">
+    <br>
+    <input type="submit" value="Save Changes">
+</form>
+</body>
+</html>
