@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="an" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <tittle>User Page</tittle>
+</head>
+<body>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Department</th>
+        <th>Salary</th>
+        <th>Role('s)</th>
+    </tr>
+    <tr>
+        <td th:text="${user4.id}"></td>
+        <td th:text="${user4.name}"></td>
+        <td th:text="${user4.department}"></td>
+        <td th:text="${user4.salary}"></td>
+        <td th:text="${user4.roles}"></td>
+    </tr>
+</table>
+</body>
+</html>
