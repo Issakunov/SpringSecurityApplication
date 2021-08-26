@@ -1,16 +1,17 @@
 package jam.workspace.config;
 
+import jam.workspace.model.Role;
 import jam.workspace.model.User;
 import org.hibernate.SessionFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.springframework.core.env.Environment;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import javax.sql.DataSource;
 import java.util.Properties;
@@ -42,7 +43,7 @@ public class MyConfig {
         Properties properties = new Properties();
         properties.put("hibernate.show_sql", "true");
         properties.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
-        properties.put("hibernate.hbm2ddl.auto", "create");
+        properties.put("hibernate.hbm2ddl.auto", "update");
         return properties;
     }
 
@@ -50,7 +51,7 @@ public class MyConfig {
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(getDataSource());
-        sessionFactory.setAnnotatedClasses(User.class);
+        sessionFactory.setAnnotatedClasses(User.class , Role.class);
         sessionFactory.setPackagesToScan("hibernate.model");
         sessionFactory.setHibernateProperties(getHibernateProperties());
         return sessionFactory;

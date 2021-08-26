@@ -9,4 +9,6 @@ public interface UserService {
     void saveUser(User user);
     void updateUserById(User user, int id);
     void deleteUserById(int id);
+    User getUserMethod(String name);
+
 }

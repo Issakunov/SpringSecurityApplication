@@ -27,8 +27,9 @@ public class UserDaoImpl implements UserDao {
         User user1 = sessionFactory.getCurrentSession().get(User.class, id);
         user1.setId(user.getId());
         user1.setName(user.getName());
-        user1.setSurname(user.getSurname());
+        user1.setName(user.getName());
         user1.setDepartment(user.getDepartment());
+        user1.setRoles(user.getRoles());
         user1.setSalary(user.getSalary());
         saveUser(user1);
     }
@@ -42,6 +43,16 @@ public class UserDaoImpl implements UserDao {
     @Override
     public void saveUser(User user) {
         sessionFactory.getCurrentSession().save(user);
+    }
 
+    @Override
+    public User findByUserName(String name) {
+        List<User> users = sessionFactory.getCurrentSession().createQuery("from User").getResultList();
+        for (User user : users) {
+            if (user.getName().equals(name)) {
+                return user;
+            }
+        }
+        return new User();
     }
 }

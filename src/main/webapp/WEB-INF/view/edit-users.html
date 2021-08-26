@@ -6,12 +6,11 @@
 </head>
 <body>
 
-<form th:method="post" th:action="@{/api/{id}(id=${user.getId()})}" th:object="${user}">
+<form action="#" th:action="@{/edit/{id}(id=${user2.getId()})}" th:object="${user2}" th:method="post">
+    <input readonly type="hidden" th:field="*{id}" id="id" placeholder="ID">
+
     <label for="name">Enter Name: </label>
     <input type="text" th:field="*{name}" id="name"/>
-    <br>
-    <label for="surname">Enter Surname: </label>
-    <input type="text" th:field="*{surname}" id="surname"/>
     <br>
     <label for="department">Enter Department: </label>
     <input type="text" th:field="*{department}" id="department"/>
@@ -19,6 +18,15 @@
     <label for="salary">Enter Salary: </label>
     <input type="text" th:field="*{salary}" id="salary">
     <br>
+    <label for="password">Enter Password: </label>
+    <input type="text" th:field="*{password}" id="password">
+    <br>
+    <p>
+    <li th:each="role : ${roles2}">
+        <input th:type="checkbox" th:name="${role}">
+        <span th:text="${role}"></span>
+    </li>
+    </p>
     <input type="submit" value="Save Changes">
 </form>
 </body>

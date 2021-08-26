@@ -6,18 +6,23 @@
 </head>
 <body>
 
-<form th:method="post" th:action="@{/api}" th:object="${users}">
+<form th:method="post" th:action="@{/}" th:object="${user3}">
     <label for="name">Enter Name: </label>
     <input type="text" th:field="*{name}" id="name">
-    <br>
-    <label for="surname">Enter Surname: </label>
-    <input type="text" th:field="*{surname}" id="surname">
     <br>
     <label for="department">Enter Department: </label>
     <input type="text" th:field="*{department}" id="department">
     <br>
     <label for="salary">Enter Salary: </label>
     <input type="text" th:field="*{salary}" id="salary">
+    <br>
+    <label for="password">Enter Password: </label>
+    <input type="text" th:field="*{password}" id="password">
+    <br>
+    <div th:each="role : ${role3}">
+        <input th:type="checkbox" th:name="${role}">
+        <span th:text="${role}"></span>
+    </div>
     <br>
     <input type="submit" value="Create">
 </form>
